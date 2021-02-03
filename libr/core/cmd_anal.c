@@ -893,11 +893,7 @@ static void __add_vars_sdb(RCore *core, RAnalFunction *fcn) {
 			free (v);
 		}
 	}
-	if (arg_count >= 0) {
-		char *v = r_str_newf ("%zd", arg_count);
-		sdb_set (core->anal->sdb_types, args, v, 0);
-		free (v);
-	}
+	sdb_num_set (core->anal->sdb_types, args, (int)arg_count, 0);
 	free (args);
 	r_anal_fcn_vars_cache_fini (&cache);
 }
