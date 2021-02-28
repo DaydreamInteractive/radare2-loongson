@@ -67,6 +67,10 @@ static int disassemble(struct r_asm_t *a, struct r_asm_op_t *op, const ut8 *buf,
 			disasm_obj.mach = bfd_mach_mipsisa64;
 		} else if (!r_str_casecmp (a->cpu, "mips32")) {
 			disasm_obj.mach = bfd_mach_mipsisa32;
+		} else if (!r_str_casecmp (a->cpu, "loongson3a")) {
+			disasm_obj.mach = bfd_mach_mips_gs464;
+		} else if (!r_str_casecmp (a->cpu, "gs464")) {
+			disasm_obj.mach = bfd_mach_mips_gs464;
 		}
 		pre_cpu = r_str_dup (pre_cpu, a->cpu);
 	}
@@ -84,7 +88,7 @@ static int disassemble(struct r_asm_t *a, struct r_asm_op_t *op, const ut8 *buf,
 	}
 
 	mips_mode = a->bits;
-	disasm_obj.arch = CPU_LOONGSON_2F;
+	disasm_obj.arch = CPU_GS464;
 	disasm_obj.buffer = bytes;
 	disasm_obj.read_memory_func = &mips_buffer_read_memory;
 	disasm_obj.symbol_at_address_func = &symbol_at_address;

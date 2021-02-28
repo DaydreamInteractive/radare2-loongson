@@ -861,7 +861,7 @@ set_default_mips_dis_options (struct disassemble_info *info)
      CP0 register, and HWR names.  */  // Changed
   mips_isa = ISA_MIPS3;
   //mips_processor = CPU_R3000; //TODO: Change it?
-  mips_processor = CPU_LOONGSON_2F; //Match value in asm_mips_gnu.c
+  mips_processor = CPU_GS464; //Match value in asm_mips_gnu.c
   micromips_ase = 0;
   mips_ase = 0;
   mips_gpr_names = mips_gpr_names_oldabi;
@@ -2622,59 +2622,59 @@ typedef enum
 } mips_option_arg_t;
 
 /* Valid MIPS disassembler options.  */
-static struct
-{
-  const char *name;
-  const char *description;
-  mips_option_arg_t arg;
-} mips_options[] =
-{
-  { "no-aliases", N_("Use canonical instruction forms.\n"),
-		  MIPS_OPTION_ARG_NONE },
-  { "msa",        N_("Recognize MSA instructions.\n"),
-		  MIPS_OPTION_ARG_NONE },
-  { "virt",       N_("Recognize the virtualization ASE instructions.\n"),
-		  MIPS_OPTION_ARG_NONE },
-  { "xpa",        N_("Recognize the eXtended Physical Address (XPA) ASE\n\
-                  instructions.\n"),
-		  MIPS_OPTION_ARG_NONE },
-  { "ginv",       N_("Recognize the Global INValidate (GINV) ASE "
-		     "instructions.\n"),
-		  MIPS_OPTION_ARG_NONE },
-  { "loongson-mmi",
-		  N_("Recognize the Loongson MultiMedia extensions "
-		     "Instructions (MMI) ASE instructions.\n"),
-		  MIPS_OPTION_ARG_NONE },
-  { "loongson-cam",
-		  N_("Recognize the Loongson Content Address Memory (CAM) "
-		     " instructions.\n"),
-		  MIPS_OPTION_ARG_NONE },
-  { "loongson-ext",
-		  N_("Recognize the Loongson EXTensions (EXT) "
-		     " instructions.\n"),
-		  MIPS_OPTION_ARG_NONE },
-  { "loongson-ext2",
-		  N_("Recognize the Loongson EXTensions R2 (EXT2) "
-		     " instructions.\n"),
-		  MIPS_OPTION_ARG_NONE },
-  { "gpr-names=", N_("Print GPR names according to specified ABI.\n\
-                  Default: based on binary being disassembled.\n"),
-		  MIPS_OPTION_ARG_ABI },
-  { "fpr-names=", N_("Print FPR names according to specified ABI.\n\
-                  Default: numeric.\n"),
-		  MIPS_OPTION_ARG_ABI },
-  { "cp0-names=", N_("Print CP0 register names according to specified "
-		     "architecture.\n\
-                  Default: based on binary being disassembled.\n"),
-		  MIPS_OPTION_ARG_ARCH },
-  { "hwr-names=", N_("Print HWR names according to specified architecture.\n\
-                  Default: based on binary being disassembled.\n"),
-		  MIPS_OPTION_ARG_ARCH },
-  { "reg-names=", N_("Print GPR and FPR names according to specified ABI.\n"),
-		  MIPS_OPTION_ARG_ABI },
-  { "reg-names=", N_("Print CP0 register and HWR names according to "
-		     "specified\n\
-                  architecture."),
-		  MIPS_OPTION_ARG_ARCH }
-};
+// static struct
+// {
+//   const char *name;
+//   const char *description;
+//   mips_option_arg_t arg;
+// } mips_options[] =
+// {
+//   { "no-aliases", N_("Use canonical instruction forms.\n"),
+// 		  MIPS_OPTION_ARG_NONE },
+//   { "msa",        N_("Recognize MSA instructions.\n"),
+// 		  MIPS_OPTION_ARG_NONE },
+//   { "virt",       N_("Recognize the virtualization ASE instructions.\n"),
+// 		  MIPS_OPTION_ARG_NONE },
+//   { "xpa",        N_("Recognize the eXtended Physical Address (XPA) ASE\n\
+//                   instructions.\n"),
+// 		  MIPS_OPTION_ARG_NONE },
+//   { "ginv",       N_("Recognize the Global INValidate (GINV) ASE "
+// 		     "instructions.\n"),
+// 		  MIPS_OPTION_ARG_NONE },
+//   { "loongson-mmi",
+// 		  N_("Recognize the Loongson MultiMedia extensions "
+// 		     "Instructions (MMI) ASE instructions.\n"),
+// 		  MIPS_OPTION_ARG_NONE },
+//   { "loongson-cam",
+// 		  N_("Recognize the Loongson Content Address Memory (CAM) "
+// 		     " instructions.\n"),
+// 		  MIPS_OPTION_ARG_NONE },
+//   { "loongson-ext",
+// 		  N_("Recognize the Loongson EXTensions (EXT) "
+// 		     " instructions.\n"),
+// 		  MIPS_OPTION_ARG_NONE },
+//   { "loongson-ext2",
+// 		  N_("Recognize the Loongson EXTensions R2 (EXT2) "
+// 		     " instructions.\n"),
+// 		  MIPS_OPTION_ARG_NONE },
+//   { "gpr-names=", N_("Print GPR names according to specified ABI.\n\
+//                   Default: based on binary being disassembled.\n"),
+// 		  MIPS_OPTION_ARG_ABI },
+//   { "fpr-names=", N_("Print FPR names according to specified ABI.\n\
+//                   Default: numeric.\n"),
+// 		  MIPS_OPTION_ARG_ABI },
+//   { "cp0-names=", N_("Print CP0 register names according to specified "
+// 		     "architecture.\n\
+//                   Default: based on binary being disassembled.\n"),
+// 		  MIPS_OPTION_ARG_ARCH },
+//   { "hwr-names=", N_("Print HWR names according to specified architecture.\n\
+//                   Default: based on binary being disassembled.\n"),
+// 		  MIPS_OPTION_ARG_ARCH },
+//   { "reg-names=", N_("Print GPR and FPR names according to specified ABI.\n"),
+// 		  MIPS_OPTION_ARG_ABI },
+//   { "reg-names=", N_("Print CP0 register and HWR names according to "
+// 		     "specified\n\
+//                   architecture."),
+// 		  MIPS_OPTION_ARG_ARCH }
+// };
 
