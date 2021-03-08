@@ -863,7 +863,7 @@ set_default_mips_dis_options (struct disassemble_info *info)
   //mips_processor = CPU_R3000; //TODO: Change it?
   mips_processor = CPU_GS464; //Match value in asm_mips_gnu.c
   micromips_ase = 0;
-  mips_ase = 0;
+  mips_ase = ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT;
   mips_gpr_names = mips_gpr_names_oldabi;
   mips_fpr_names = mips_fpr_names_numeric;
   mips_cp0_names = mips_cp0_names_numeric;
@@ -871,7 +871,7 @@ set_default_mips_dis_options (struct disassemble_info *info)
   mips_cp0sel_names_len = 0;
   mips_cp1_names = mips_cp1_names_numeric;
   mips_hwr_names = mips_hwr_names_numeric;
-  no_aliases = 0;
+  no_aliases = 1;
 
   /* Set ISA, architecture, and cp0 register names as best we can.  */
 #if ! SYMTAB_AVAILABLE
@@ -1987,7 +1987,9 @@ print_insn_mips (bfd_vma memaddr,
 
 	      if (op->args[0])
 		{
-		  infprintf (is, "\t");
+		  //infprintf (is, "\t");
+      //comaptible with radare2's visual mode
+      infprintf (is, " ");
 		  print_insn_args (info, op, decode_mips_operand, word,
 				   memaddr, 4);
 		}
